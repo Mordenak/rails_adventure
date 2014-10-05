@@ -1,6 +1,7 @@
 <% if @user %>
   <% session[:user_id] = @user.id %>
-  <%= "Logged in as #{@user.name}" %>
+  <%= "Logged in as #{@user.name}" %><br />
+  <%= link_to 'characters', @user %>
 <% else %>
   <%= "No user context" %>
 <% end %>

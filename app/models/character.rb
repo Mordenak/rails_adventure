@@ -1,3 +1,3 @@
 class Character < ActiveRecord::Base
-  has_one: :race
+  has_one :race
 end

@@ -1,0 +1,13 @@
+<%= form_for(@character) do |f| %>
+  <div class="info">
+    <%= f.label(:name, "Character Name:") %>
+    <%= f.text_field :name %>
+    <br />
+    <br />
+    <%= f.label(:race, "Race:") %>
+    <%= f.text_field :race %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

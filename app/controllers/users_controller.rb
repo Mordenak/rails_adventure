@@ -37,7 +37,8 @@ class UsersController < ApplicationController
       if @user.password == params[:hashed_password]
         # give_token
         session[:user_id] = @user.id
-        redirect_to controller: 'users', action: 'show'
+        # why does this not work? :(
+        # redirect_to controller: 'users', action: 'show'
       end
     else
       redirect_to controller: 'welcome', action: 'index', notice: 'incorrect login.', status: 303

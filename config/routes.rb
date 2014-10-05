@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # Example resource route with options:
   resources :users
+  resources :characters
   
 
   post '/login', to: 'users#login'
