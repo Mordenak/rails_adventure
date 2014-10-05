@@ -1,0 +1,13 @@
+<%= form_for(@user) do |f| %>
+  <div class="info">
+    <%= f.label(:name, "User Name:") %>
+    <%= f.text_field :name %>
+    <br />
+    <br />
+    <%= f.label(:hashed_password, "Password:") %>
+    <%= f.text_field :hashed_password %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

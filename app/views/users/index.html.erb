@@ -1,0 +1,11 @@
+<h1>Users#index</h1>
+
+<!-- check session -->
+<% if session[:user_id] %>
+
+  <% if @user %>
+    <%= "Welcome back #{@user.name}" %>
+  <% end %>
+
+
+<% end %>

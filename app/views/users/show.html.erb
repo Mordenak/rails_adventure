@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<% if @user %>
+  <%= @user.name %>
+  <%= @user.hashed_password %>
+<% end %>

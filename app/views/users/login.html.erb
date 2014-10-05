@@ -1,0 +1,6 @@
+<% if @user %>
+  <% session[:user_id] = @user.id %>
+  <%= "Logged in as #{@user.name}" %>
+<% else %>
+  <%= "No user context" %>
+<% end %>
