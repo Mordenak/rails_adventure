@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 
 <% if @user %>
   <%= @user.name %><br />
-  <%= @user.hashed_password %><br />
+  <%= "used pw: #{@user.password}" %><br />
+  <%= "recorded: #{@user.hashed_password}" %><br />
 <% end %>
 
 <%= link_to "Create character", action: 'new', controller: 'characters' %>

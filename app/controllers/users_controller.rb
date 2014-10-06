@@ -16,11 +16,13 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-    @user.password = user_params[:hased_password]
+    puts "Creating with #{user_params[:password]}"
+    @user.password = user_params[:password]
     @user.save!
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'user was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -32,23 +34,24 @@ class UsersController < ApplicationController
 
   def login
     # User.authenticate(params[:user], params[:password])
+    puts "Login got #{params[:name]} and #{params[:password]}"
     @user = User.find_by_name(params[:name])
     if @user
-      if @user.password == params[:hashed_password]
+      if User.authenticate(@user, params[:password])
         # give_token
         session[:user_id] = @user.id
-        # why does this not work? :(
-        # redirect_to controller: 'users', action: 'show'
+        # render action: 'show', status: 302, location: @user
+        redirect_to(user_path(@user))
+      else
+        redirect_to controller: 'welcome', action: 'index', notice: 'incorrect login.'
       end
     else
-      redirect_to controller: 'welcome', action: 'index', notice: 'incorrect login.', status: 303
+      redirect_to controller: 'welcome', action: 'index', notice: 'incorrect login.'
     end
   end
 
   def logout
-    if @user
-      @user.password = nil
-    end
+    @user = nil
     session[:user_id] = nil
     redirect_to controller: 'welcome', action: 'index', status: 302
   end
@@ -60,7 +63,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params[:user].permit(:name, :hashed_password)
+      params[:user].permit(:name, :password, :hashed_password)
     end
 
 end

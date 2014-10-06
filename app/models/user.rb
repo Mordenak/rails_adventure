@@ -7,11 +7,14 @@ class User < ActiveRecord::Base
   include BCrypt
 
   def password
-    @password ||= Password.new(hashed_password)
+    # puts "test: #{Password.new(hashed_password)}"
+    @password ||= Password.create(hashed_password)
   end
 
   def password=(new_password)
     @password = Password.create(new_password)
+    puts "Used #{new_password}"
+    puts "Setting as #{@password}"
     self.hashed_password = @password
   end
 
@@ -23,14 +26,15 @@ class User < ActiveRecord::Base
   #   !@new_password.blank?
   # end
 
-  # def self.authenticate(username, password)
-  #   if user = find_by_name(username)
-  #     if BCrypt::Password.new(user.hashed_password).is_password? password
-  #       return user
-  #     end
-  #   end
-  #   return nil
-  # end
+  def self.authenticate(user, password)
+    # temp = Password.create(password)
+    puts "attempting on: #{password}"
+    puts "against: #{user.hashed_password}"
+    if Password.new(user.hashed_password).is_password? password
+      return user
+    end
+    return nil
+  end
 
   # def self.hash_password(password)
   #   BCrypt::Password.create(password)

@@ -1,7 +1,5 @@
 Welcome!
 
-<p id="notice"><%= "#{notice}" %></p>
-
 <!-- center this at some point... -->
 <% if !session[:user_id] %>
   <%= form_tag("/login", method: "post") do %>
@@ -14,5 +12,4 @@ Welcome!
   <button><a href="/users/new">Sign up</a></button>
 <% else %>
   <%= "Welcome back #{User.find_by_id(session[:user_id]).name}" %>
-  <%= link_to 'logout', "/logout", method: :post %>
 <% end %>
