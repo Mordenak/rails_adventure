@@ -3,9 +3,14 @@
     <%= f.label(:name, "Character Name:") %>
     <%= f.text_field :name %>
     <br />
-    <br />
     <%= f.label(:race, "Race:") %>
-    <%= f.text_field :race %>
+    <%= f.collection_select :race_id, Race.all, :id, :name %>
+    <br />
+    <%= f.label(:race, "Class:") %>
+    <%= f.collection_select :pc_class_id, PcClass.all, :id, :name %>
+    
+    <% @user = User.find_by_id(session[:user_id]) %>
+    <%= hidden_field(:user, @user) %>
   </div>
   <div class="actions">
     <%= f.submit %>

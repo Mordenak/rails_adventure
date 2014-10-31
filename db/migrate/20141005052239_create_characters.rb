@@ -4,6 +4,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.column :name, :string
 
       t.references :race
+      t.references :pc_class
       t.belongs_to :user
 
       t.timestamps

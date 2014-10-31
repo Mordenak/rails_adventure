@@ -1,4 +1,7 @@
 class CharactersController < ApplicationController
+
+  before_action :set_character, only: [:show]
+
   def index
   end
 
@@ -6,10 +9,13 @@ class CharactersController < ApplicationController
     @character = Character.new
   end
 
+  def show
+
+  end
 
   def create
 
-    @character = User.new(character_params)
+    @character = Character.new(character_params)
     # @character.save!
 
     respond_to do |format|
@@ -21,8 +27,18 @@ class CharactersController < ApplicationController
         format.json { render json: @character.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
+
+  private
+
+    def set_character
+      @user = Character.find(params[:id])
+    end
+
+    def character_params
+      params[:character].permit(:name, :race_id, :pc_class_id, )
+    end
 
 
 end

@@ -11,23 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005052239) do
+ActiveRecord::Schema.define(version: 20141008020857) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
+    t.integer  "race_id"
+    t.integer  "pc_class_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pc_classes", force: true do |t|
+    t.string   "name"
+    t.integer  "str_gain"
+    t.integer  "dex_gain"
+    t.integer  "vit_gain"
+    t.integer  "int_gain"
+    t.integer  "wis_gain"
+    t.integer  "spd_gain"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "races", force: true do |t|
     t.string   "name"
+    t.integer  "str_gain"
+    t.integer  "dex_gain"
+    t.integer  "vit_gain"
+    t.integer  "int_gain"
+    t.integer  "wis_gain"
+    t.integer  "spd_gain"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_securities", force: true do |t|
     t.string   "account_level", limit: 1, default: "G"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
