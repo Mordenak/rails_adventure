@@ -9,7 +9,7 @@
 <%= link_to "Create character", action: 'new', controller: 'characters' %>
 
 <% if !@user.characters.empty? %>
-  <%= "stuff" %>
+  <%= render 'show_characters' %>
 <% else %>
   "No characters"
 <% end %>

@@ -1,3 +1,5 @@
 class Character < ActiveRecord::Base
-  has_one :race
+  belongs_to :race
+  belongs_to :pc_class
+  belongs_to :user
 end

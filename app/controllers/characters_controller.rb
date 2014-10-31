@@ -16,6 +16,8 @@ class CharactersController < ApplicationController
   def create
 
     @character = Character.new(character_params)
+
+    @character.user_id = session[:user_id]
     # @character.save!
 
     respond_to do |format|
