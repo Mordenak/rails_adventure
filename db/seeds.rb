@@ -50,6 +50,8 @@ races.map{|key, value|
   end
 }
 
+master_settings = game_settings.new(10, "((level * 100) * 2) + ((level * 100) * 0.85)")
+
 
 # if PcClass.find_by_name("Warrior")
 #   war = PcClass.new("Warrior", 2, 1, 2, 0, 1, 0)
