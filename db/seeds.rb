@@ -50,7 +50,8 @@ races.map{|key, value|
   end
 }
 
-master_settings = game_settings.new(10, "((level * 100) * 2) + ((level * 100) * 0.85)")
+master_settings = GameSettings.new(:max_level => 10, :level_formula => "((level * 100) * 2) + ((level * 100) * 0.85)")
+master_settings.save!
 
 
 # if PcClass.find_by_name("Warrior")

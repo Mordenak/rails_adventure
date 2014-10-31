@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008020857) do
+ActiveRecord::Schema.define(version: 20141031195704) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
+    t.integer  "level",       default: 1
+    t.integer  "xp",          default: 0
+    t.integer  "gold",        default: 0
     t.integer  "race_id"
     t.integer  "pc_class_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_settings", force: true do |t|
+    t.integer  "max_level"
+    t.string   "level_formula"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
