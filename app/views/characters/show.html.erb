@@ -1,7 +1,21 @@
 
-<% if @character %>
-  <%= @character.name %>
-  <%= @character.race_id %>
-  <%= @character.pc_class_id %>
-  <%= @character.user_id %>
-<% end %>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Race</th>
+    <th>Class</th>
+    <th>User</th>
+  </thead>
+  <tbody>
+    <tr>
+      <% if @character %>
+        <td><%= @character.name %></td>
+        <td><%= @character.race.name %></td>
+        <td><%= @character.pc_class.name %></td>
+        <td><%= @character.user.name %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'User Home', user_path(session[:user_id]) %>

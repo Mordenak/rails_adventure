@@ -35,11 +35,11 @@ class CharactersController < ApplicationController
   private
 
     def set_character
-      @user = Character.find(params[:id])
+      @character = Character.find(params[:id])
     end
 
     def character_params
-      params[:character].permit(:name, :race_id, :pc_class_id, )
+      params[:character].permit(:name, :race_id, :pc_class_id )
     end
 
 
